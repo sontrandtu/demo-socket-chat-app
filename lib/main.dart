@@ -1,13 +1,16 @@
 import 'dart:io';
 
 import 'package:demo_socket/chat/chat_page.dart';
+import 'package:demo_socket/dnamic_link/dynamic_link_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'chat/chat_socket.dart';
 
-void main() {
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -16,26 +19,57 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Chat'),
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // home: const MyHomePage(title: 'Flutter Demo Chat'),
+        home: const MyHomePage()
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Center(
+        child: Column(
+          children: [
+            ElevatedButton(onPressed: () => navigate(const DynamicLinkPage()), child: const Text("Dynamic Link")),
+            ElevatedButton(onPressed: () => navigate(const SocketPage()), child: const Text("Socket Chat")),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void navigate(Widget child) {
+    Navigator.of(context).push(CupertinoPageRoute(builder: (_) => child));
+  }
+}
+
+
+
+
+class SocketPage extends StatefulWidget {
+
+  const SocketPage({super.key});
+
+  @override
+  State<SocketPage> createState() => _SocketPageState();
+}
+
+class _SocketPageState extends State<SocketPage> {
 
   String _name = '';
 
@@ -45,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.title),
+          title: const Text("Socket"),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),

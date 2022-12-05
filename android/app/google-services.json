@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "225777326598",
+    "project_id": "fir-socket-213ef",
+    "storage_bucket": "fir-socket-213ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:225777326598:android:ca59de13e87cbe10758187",
+        "android_client_info": {
+          "package_name": "com.example.demo_socket"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "225777326598-hju5b5t1ejo8n0tofla0s0spcj4o1ase.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDLaGLxdK9PqUpd8iTCFEE7ihQ7_tN162g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "225777326598-hju5b5t1ejo8n0tofla0s0spcj4o1ase.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
