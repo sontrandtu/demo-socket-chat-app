@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:demo_socket/chat/chat_page.dart';
-import 'package:demo_socket/dnamic_link/dynamic_link_page.dart';
+import 'package:demo_socket/dynamic_link/dynamic_link_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'chat/chat_socket.dart';
+import 'method_channel/call_android_native_page.dart';
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             ElevatedButton(onPressed: () => navigate(const DynamicLinkPage()), child: const Text("Dynamic Link")),
             ElevatedButton(onPressed: () => navigate(const SocketPage()), child: const Text("Socket Chat")),
+            ElevatedButton(onPressed: () => navigate(const CallAndroidNativePage()), child: const Text("Method Channel")),
           ],
         ),
       ),
@@ -106,7 +108,7 @@ class _SocketPageState extends State<SocketPage> {
               )
             ],
           ),
-        ), // This trailing comma makes auto-formatting nicer for build methods.
+        ),
       ),
     );
   }
